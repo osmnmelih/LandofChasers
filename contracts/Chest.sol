@@ -4,10 +4,11 @@ pragma solidity 0.8.20;
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 interface IERC20 {
-    function mint(address to, uint256 quantity) external;
+    function mintXPInventory(address to, uint256 quantity) external;
 }
 
 //More functionalities will be added to the Chest contract such as withdrawing the NFTs.
+//0x5dBe3d12a3d1D088BD7A4804E68BBa1940855100
 contract ChestLoC is IERC721Receiver {
     address public xpTokenAddress;
     address public inventoryAddress;
@@ -26,7 +27,7 @@ contract ChestLoC is IERC721Receiver {
         // Mint XP tokens when an NFT is transferred to this contract
         // Assume 100 XPs are minted for each NFT received
         require(msg.sender == inventoryAddress, "NFT not eligible.");
-        IERC20(xpTokenAddress).mint(from, 100 * 10**18);
+        IERC20(xpTokenAddress).mintXPInventory(from, 100 * 10**18);
         return this.onERC721Received.selector;
     }
 

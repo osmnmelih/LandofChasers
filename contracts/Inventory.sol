@@ -4,23 +4,18 @@ pragma solidity 0.8.20;
 import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-//0xF50876b0c719c828aEfb87ECAECE1DadaaE7A3D4
+//0x964D3aEcaCdE6561f998F2f262c9B170b5d8D0B0
 contract LoCInventory is ERC721A, Ownable {
 
-    uint256 constant MAX_SUPPLY = 100; 
-    uint256 constant MAX_PER_WALLET = 10;
     string private baseTokenURI = "";
 
-    constructor() ERC721A("Land of Chasers", "Chasers") {}
+    constructor() ERC721A("Land of Chasers Inventory", "LoC-Inventory") Ownable(msg.sender) {}
 
-    function mint(uint256 quantity) external payable {
-        require(_numberMinted(msg.sender) + quantity <= MAX_PER_WALLET, "Max amount minted");
-        require(totalSupply() + quantity <= MAX_SUPPLY, "Max supply reached");
-
+    function mint(uint256 quantity) external payable onlyOwner {
         _safeMint(msg.sender, quantity);
     }
 
-    function updateURI(string calldata _URI) external onlyOwner{
+    function updateURI(string calldata _URI) external onlyOwner {
         baseTokenURI = _URI;
     }
 
