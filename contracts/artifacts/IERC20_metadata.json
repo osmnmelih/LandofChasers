@@ -39,7 +39,7 @@
 		"compilationTarget": {
 			"contracts/Chest.sol": "IERC20"
 		},
-		"evmVersion": "paris",
+		"evmVersion": "shanghai",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"

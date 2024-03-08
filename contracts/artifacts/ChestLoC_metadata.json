@@ -101,7 +101,7 @@
 		"compilationTarget": {
 			"contracts/Chest.sol": "ChestLoC"
 		},
-		"evmVersion": "paris",
+		"evmVersion": "shanghai",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
